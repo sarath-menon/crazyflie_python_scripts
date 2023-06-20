@@ -47,7 +47,7 @@ class LoggingExample:
         self.is_connected = True
 
         # open the file in the write mode
-        self.csv_file = open('/Users/sarathmenon/Documents/eth_projects/freertos_sim/crazyflie_python_scripts/logs/gyro/log_1.csv', 'w')
+        self.csv_file = open('./logging/logs/gyro/log_1.csv', 'w')
 
         # create the csv writer
         self.writer = csv.writer(self.csv_file)
@@ -105,8 +105,8 @@ class LoggingExample:
         """Callback from a the log API when data arrives"""
         print(f'[{timestamp}][{logconf.name}]: ', end='')
         
-        gyro_filtered = np.array([data["gyro.x"], data["gyro.x"], data["gyro.x"]])
-        gyro_unfiltered = np.array([data["gyro_unfiltered.x"], data["gyro_unfiltered.x"], data["gyro_unfiltered.x"]])
+        gyro_filtered = np.array([data["gyro.x"], data["gyro.y"], data["gyro.z"]])
+        gyro_unfiltered = np.array([data["gyro_unfiltered.x"], data["gyro_unfiltered.y"], data["gyro_unfiltered.z"]])
 
         print(f"Gyro filtered: {gyro_filtered[0]:3.3f} {gyro_filtered[1]:3.3f} {gyro_filtered[2]:3.3f}", end='')
 
